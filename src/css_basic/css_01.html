@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Basic</title>
+    <style></style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <style>
+        /* 셀렉터의 우선순위
+            태그 -> 클래스 -> 아이디
+            simple -> complex
+        */
+
+        body .test {
+            color:red; /* 요소의 텍스트 색상 */
+            color:rgb(160,136,43); /* rgb 코드 적용 */
+            color:rgba(255,100,0,0.5); /* rbg + alpha */
+            opacity:0.5;
+        }
+
+        .div_test {
+            height:500px;
+            background:#d5d5d5;
+            background:url('https://post-phinf.pstatic.net/MjAxODAxMjJfMTU4/MDAxNTE2NTk5MzE0Mzk3.tpo98J5uKOWXI_DKeVshDaXv0A-6fpTvDdbDWX3Uqbkg.dJcyQ8Y4rABIDFt2kbJRsUVjgLmT0Mo9hYVurPAgyfIg.JPEG/6-1.jpg?type=w1200') no-repeat center center;
+        }
+    </style>
+    <a href="#" style="" class="test">버튼</a>
+    <div class="div_test">
+        ABCDE
+    </div>
+</body>
+</html>
