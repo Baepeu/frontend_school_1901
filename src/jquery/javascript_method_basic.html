@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>JavaScript</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript">
         /*
             window 객체 : 브라우저를 제어하는 객체
@@ -63,74 +64,24 @@
             location.replace("주소") : 페이지 갈아끼기
             location.reload() : 페이지 새로고침
         */
+        $(function() {
+            $(document).on('mouseover','.test',function() {
+                console.log('111');
+            });
+
+            $(document).on('click','.tt',function() {
+            });
+            $('.complete').append($('.ing #item1'));
+            $('.tt').click(function() {
+                $('body').append('<div class="test">JavaScript Method Basic</div>');
+                $('.tt').click();
+            });
+        });
     </script>
 </head>
 <body>
-    JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
-JavaScript Method Basic<br>
+<div class="test" id="tt">JavaScript Method Basic</div>
+
+
 </body>
 </html>

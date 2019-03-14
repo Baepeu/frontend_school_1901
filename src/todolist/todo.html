@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<!-- Uses a transparent header that draws on top of the layout's background -->
+<style>
+.demo-layout-transparent {
+  background: url('images/background.jpg') center / cover;
+}
+.demo-layout-transparent .mdl-layout__drawer {
+    background:rgba(255,255,255,0.3)
+}
+.demo-layout-transparent .mdl-layout__header,
+.demo-layout-transparent .mdl-layout__drawer-button {
+  /* This background is dark, so we set text to white. Use 87% black instead if
+     your background is light. */
+  color: white;
+}
+
+.mdl-layout__drawer.is-visible + .mdl-layout__drawer-button {
+    display:none;
+}
+
+.mdl-layout-title, .mdl-layout__drawer .mdl-navigation .mdl-navigation__link {
+    color:white;
+}
+.demo-list-control {
+  width: 300px;
+}
+
+.demo-list-radio {
+  display: inline;
+}
+.mdl-tabs__panel {
+    text-align:center;
+}
+.mdl-tabs__panel .mdl-list {
+    display:inline-block;
+}
+
+.mdl-dialog {
+    width:fit-content;
+    margin-top:50%;
+}
+.sample_list {
+display:none;
+}
+
+
+.todo_list_all li span.mdl-list__item-primary-content.complete {
+    text-decoration:line-through;
+}
+</style>
+
+
+<div class="demo-layout-transparent mdl-layout mdl-js-layout">
+    <header class="mdl-layout__header mdl-layout__header--transparent">
+        <div class="mdl-layout__header-row">
+            <!-- Title -->
+            <span class="mdl-layout-title">Todo</span>
+            <!-- Add spacer, to align navigation to the right -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link btn_todo_add" href="">Add</a>
+                <a class="mdl-navigation__link" href="">Toggle</a>
+                <a class="mdl-navigation__link" href="">Remove</a>
+            </nav>
+        </div>
+    </header>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Todo</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link btn_todo_add" href="">Add</a>
+            <a class="mdl-navigation__link" href="">Toggle</a>
+            <a class="mdl-navigation__link" href="">Remove</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+
+        <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+            <div class="mdl-tabs__tab-bar">
+                <a href="#starks-panel" class="mdl-tabs__tab is-active">All</a>
+                <a href="#lannisters-panel" class="mdl-tabs__tab">Ing</a>
+                <a href="#targaryens-panel" class="mdl-tabs__tab">Complete</a>
+            </div>
+
+            <div class="mdl-tabs__panel is-active" id="starks-panel">
+                <ul class="demo-list-control mdl-list todo_list_all">
+                    <li class="mdl-list__item sample_list">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons">calendar_today</i>
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" class="mdl-checkbox__input">
+                          </label>
+                        </span>
+                    </li>
+
+                    <li class="mdl-list__item">
+                        <span class="mdl-list__item-primary-content">
+                          <i class="material-icons">calendar_today</i>
+                            Test
+                        </span>
+                        <span class="mdl-list__item-secondary-action">
+                          <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect">
+                            <input type="checkbox" class="mdl-checkbox__input">
+                          </label>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="mdl-tabs__panel" id="lannisters-panel">
+                complete
+            </div>
+            <div class="mdl-tabs__panel" id="targaryens-panel">
+                ing
+            </div>
+        </div>
+
+        <!-- Wide card with share menu button -->
+        <style>
+.demo-card-wide.mdl-card {
+  width: 512px;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('images/welcome_card.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+        </style>
+        <dialog class="mdl-dialog dialog_todo_add">
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text">Todo Add</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <form action="#">
+  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+    <input class="mdl-textfield__input" type="text" id="add_todo_text">
+    <label class="mdl-textfield__label" for="sample3">Insert Your todo</label>
+  </div>
+</form>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect todo_add_submit">
+                    Add
+                </a>
+            </div>
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons dialog_todo_close">close</i>
+                </button>
+            </div>
+        </div>
+        </dialog>
+    </main>
+</div>
+
+    <script>
+    $(function() {
+        $('.btn_todo_add').on('click', function(e) {
+            e.preventDefault();
+
+            $('.dialog_todo_add').get(0).showModal();
+        });
+
+        $(document).on('click','.dialog_todo_close + span', function() {
+            console.log('test');
+            $(this).parents('dialog').get(0).close();
+        });
+
+        $('.todo_add_submit').click(function() {
+            add_todo_value = $('#add_todo_text').val();
+            sample_item = $('li.sample_list').clone();
+            sample_item.removeClass('sample_list');
+            sample_item.find('.mdl-list__item-primary-content').append(add_todo_value);
+            $('.todo_list_all').append(sample_item);
+            $('#add_todo_text').val('');
+            $(this).parents('dialog').get(0).close();
+
+            html.update(sample_item.get(0))
+
+        });
+
+        $(document).on('click','.todo_list_all li span.mdl-list__item-primary-content', function() {
+            $(this).toggleClass('complete');
+        });
+        
+    });
+
+    </script>
+</body>
+</html>
