@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+
+        // document ready
+        $(document).ready(function() {
+           console.log("1");
+        });
+
+        // callback
+        $(function() {
+           console.log("3");
+        });
+
+        // window ready : window load 3.x removed
+        // deprecated, removed
+
+        $(window).ready(function() {
+            console.log("2");
+        });
+    </script>
+</head>
+<body>
+    <a href="https://www.naver.com" class="test" id="naver_link"><span>test</span></a>
+    <ul id="test_ul">
+        <li>바나나</li>
+        <li>사과</li>
+        <li>딸기</li>
+    </ul>
+    <script type="text/javascript">
+        /*
+            jQuery에서 각 이벤트는
+            $(요소).eventName(실행할 함수);
+
+            $(요소).attr('속성이름'); : 해당 요소의 속성값을 읽어온다.
+
+            $(요소).show(), .hide(), .toggle() : 요소를 보이거나 숨긴다.
+
+            $(요소).addClass('클래스이름'), .removeClass('클래스이름'), .toggleClass('클래스이름') : 클래스를 추가 삭제 하는 역할
+
+            // 컨텐츠 변경
+            // 아예 값을 변경한다.
+            $(요소).html(), .text() : 내부 값 읽기
+            $(요소).html(값), .text(값) : 내부 값을 변경
+
+            // 값을 추가한다.
+            $(요소).html($(요소).html()+"추가값")
+            $(요소).append("추가값")
+            $(요소).prepend("추가값")
+
+            // 값을 삭제
+            $(요소).remove() : 요소를 제거
+            $(요소).remove('selector') : 해당 요소의 자식 노드 중 selector에 해당하는 자식을 삭제
+
+            // css 변경
+            $(요소).css('display','block');
+            $(요소).css({'display':'block','color':'red'});
+        $('a').bind('blur', function() {
+            alert('test');
+        });
+        */
+        $('a').click(function(e) {
+            e.preventDefault();
+            $(this).hide();
+            // 이벤트를 발생시킨 요소 : target, currentTarget
+        });
+
+        $('a').mouseover(function() {
+            //alert('test');
+        });
+    </script>
+</body>
+</html>

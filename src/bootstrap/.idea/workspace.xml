@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0e4702d2-91fd-4b88-9ad2-4699d5896c86" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../css_basic/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../css_basic/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../css_basic/css_01.html" beforeDir="false" afterPath="$PROJECT_DIR$/../css_basic/css_01.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,6 +47,7 @@
     <session id="1859190285">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -173,7 +173,7 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
-    <option name="width" value="1453" />
+    <option name="width" value="1440" />
     <option name="height" value="792" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />

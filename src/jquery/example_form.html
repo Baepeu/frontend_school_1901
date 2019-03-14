@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        /*
+            form 태그의 입력완료 이벤트 : submit
+            각 input 태그의 값은 $(요소).val() 읽고
+            변경하려면 $(요소).val(값) 으로 하면 된다.
+        */
+        $(document).ready(function() {
+            $('form').submit(function(e) {
+                e.preventDefault();
+                alert($('input[name="id"]').val());
+                $('input[name="name"]').val($('input[name="id"]').val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <!--
+        form : 사용자의 입력받기 위해 사용하는 태그
+        action : 입력받은 내용을 전달할 페이지
+        method : get, post
+    -->
+    <form action="#" method="post">
+        <input type="text" name="name">
+        <input type="text" name="id">
+        <input type="password" name="password">
+        <input type="submit" value="가입완료">
+    </form>
+</body>
+</html>
