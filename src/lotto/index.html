@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript">
+        //console.log(Math.random()); // 0~1 사이의 숫자를 랜덤
+        /*
+        for(i=0;i<5;i++) {
+            var numbers = [];
+
+            while(numbers.length<6) {
+                var number = Math.floor((Math.random() * 45) + 1);
+                if(numbers.indexOf(number)==-1) {
+                    numbers.push(number);
+                }
+            }
+
+            numbers.sort(function(a, b){return a-b});
+
+            console.log(numbers);
+        }
+        */
+
+        for(j=0;j<5;j++) {
+            var original_numbers = [];
+            for(i=1;i<46;i++) {
+                original_numbers.push(i);
+            }
+
+            var numbers = [];
+
+            for(i=0;i<6;i++) {
+                var number_index = Math.floor((Math.random() * original_numbers.length));
+                var get_number = original_numbers[number_index];
+                numbers.push(get_number);
+                original_numbers.splice(number_index,1);
+            }
+
+            numbers.sort(function(a, b){return a-b});
+            console.log(numbers);
+        }
+    </script>
+</head>
+<body>
+    <!--
+        로또 번호는
+        1~45까지의 정수 중에서 중복되지 않는 숫자 6개를 뽑는 게임
+        로또 용지 1장은 최대 5게임을 표현할 수 있습니다.
+        1게임 1,000원, 최대 1장은 5,000원
+        1) 로또 번호 1게임을 뽑게 해준다.
+        2) 로또 번호 5게임을 뽑게 해준다.
+        3) 로또 번호를 지정된 게임 수만큼 뽑게 해준다.
+        4) 지정된 게임 수만큼 뽑고, 비용을 함께 출력한다.
+    -->
+</body>
+</html>
