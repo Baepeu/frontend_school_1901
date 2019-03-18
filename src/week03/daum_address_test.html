@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>우편번호 검색기 실습</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js" ></script>
+</head>
+<body>
+    <!--
+
+        회원가입창 만들기
+        1. 아이디
+        2. 비밀번호
+        3. 이름
+        4. 주소 - 우편번호, 주소, 주소 디테일, 우편번호 찾기
+
+        5. 회원가입 확인버튼 - submit
+
+        * 회원 가입 확인 버튼을 눌렀을 때
+        모든 결과를 하나로 합쳐서 alert창에 띄워주세요.
+
+    -->
+    <!--
+        form tag
+            input, select, textarea
+            input - type => text, email, phone, date, password, hidden
+    -->
+    <form action="#" method="post" id="join_form">
+        <label>
+            ID :
+         <input type="text" name="username" id="username">
+            </label>
+        <label>주소 :
+        <input type="text" name="address" placeholder="도로명 주소 입력" id="address">
+            </label>
+        <a href="#" id="zipcode_search">우편번호 찾기</a>
+        <input type="submit" value="회원가입 완료">
+    </form>
+
+
+    <script>
+        $(function() {
+            $('#zipcode_search').click(function(e) {
+                e.preventDefault();
+
+                new daum.Postcode({
+                    oncomplete: function(data) {
+                        console.log(data);
+                        $('#address').val(data.address);
+                    }
+                }).open();
+            });
+
+            $('#join_form').submit(function() {
+                if($('#username').val()=='') {
+                    alert('아이디를 입력하세요.');
+                    return false;
+                }
+
+                if(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i.test($('#email').val())==false) {
+                    alert("이메일 형식이 잘못되었습니다.");
+                    return false;
+                }
+
+                // 최종 안내 문구 출력
+                // 정규표현식 -
+            });
+        });
+    </script>
+
+    <!--
+     과제 1 : 입력값이 있는지 없는지 테스트 벨리데이션
+     과제 2 : 정규표현식을 이용한 벨리데이션
+
+    -->
+</body>
+</html>
+
+
+
+
+
+
+
+
