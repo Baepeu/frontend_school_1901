@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Menu 01</title>
+    <style>
+        .mainmenu {
+            display:block;
+            width:100%;
+            height:25px;
+            background:#d5d5d5;
+        }
+
+        li.main_menu_item {
+            display:inline-block;
+            float:left;
+            width:25%;
+            line-height:25px;
+            position:relative;
+        }
+        .submenu {
+            display:none;
+            position:absolute;
+            left:0;
+            top:25px;
+            background:black;
+            color:white;
+        }
+
+        li.main_menu_item:hover .submenu {
+            display:block;
+        }
+
+        #content {
+            background:#f22ed3;
+        }
+    </style>
+</head>
+<body>
+    <ul class="mainmenu">
+        <li class="main_menu_item">
+            Menu 01
+            <ul class="submenu">
+                <li class="sub_menu_item">sub01</li>
+                <li class="sub_menu_item">sub02</li>
+                <li class="sub_menu_item">sub03</li>
+            </ul>
+        </li>
+        <li class="main_menu_item">
+            Menu 02
+            <ul class="submenu">
+                <li class="sub_menu_item">sub01</li>
+                <li class="sub_menu_item">sub02</li>
+                <li class="sub_menu_item">sub03</li>
+            </ul>
+        </li>
+        <li class="main_menu_item">
+            Menu 03
+            <ul class="submenu">
+                <li class="sub_menu_item">sub01</li>
+                <li class="sub_menu_item">sub02</li>
+                <li class="sub_menu_item">sub03</li>
+            </ul>
+        </li>
+        <li class="main_menu_item">
+            Menu 04
+            <ul class="submenu">
+                <li class="sub_menu_item">sub01</li>
+                <li class="sub_menu_item">sub02</li>
+                <li class="sub_menu_item">sub03</li>
+            </ul>
+        </li>
+    </ul>
+    <div id="content">
+        main content
+    </div>
+</body>
+</html>

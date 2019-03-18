@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="script/jquery-ui.min.js"></script>
+    <style>
+        .btn_menu {
+            position:fixed;
+            top:5px;
+            left:5px;
+            background:black;
+            color:white;
+        }
+        .main_menu {
+            position:fixed;
+            top:0px;
+            left:0px;
+            background:rgba(0,0,0,0.5);
+            color:white;
+            display:none;
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <div>main content<br>
+    main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+        main content<br>main content<br>
+        main content<br>
+        main content<br>
+        main content<br>
+
+
+    </div>
+    <a class="btn_menu">Menu</a>
+    <ul class="main_menu">
+        <li>menu1</li>
+        <li>menu1</li>
+        <li>menu1</li>
+        <li>menu1</li>
+    </ul>
+    <script type="text/javascript">
+        // mouseover, mouseout 자식 엘리먼트에 접근했을 때도 동작
+        // mouseenter, mouseleave 자식 엘리먼트에는 동작하지 않음
+
+        $(function() {
+            $('.btn_menu').click(function(e) {
+                e.preventDefault();
+                $('.btn_menu').hide();
+                $('.main_menu').toggle( "slide" );
+            });
+
+            $('.main_menu').mouseleave(function() {
+                $('.main_menu').toggle( "slide" );
+                $('.btn_menu').show();
+            });
+        });
+    </script>
+</body>
+</html>
