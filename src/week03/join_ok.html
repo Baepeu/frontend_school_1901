@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    회원 목록
+
+    <script type="text/javascript">
+        var query = window.location.search.substr(1);
+        var get_data = query.split("&");
+        console.log(get_data);
+        for(var i in get_data) {
+            var data = get_data[i].split("=");
+            var name = data[0];
+            var value = data[1];
+            console.log(name, value);
+        }
+    </script>
+</body>
+</html>
