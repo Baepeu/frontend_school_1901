@@ -157,9 +157,42 @@
 
 <script>
     var list_item = '<li class="mdl-list__item"><span class="mdl-list__item-primary-content"><i class="material-icons">calendar_today</i></span><span class="mdl-list__item-secondary-action"><label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect"><input type="checkbox" class="mdl-checkbox__input"></label></span></li>';
+    storage_key = "todos";
+
+    function saveTodo() {
+        var data = {};
+
+        var todos = $('.todo_list_all li .mdl-list__item-primary-content');
+        todos.each(function(index) {
+            data[index] = [$(this).attr('data-value'), $(this).hasClass("complete")];
+        });
+        localStorage.setItem(storage_key, JSON.stringify(data));
+    }
+
+    function loadTodo() {
+        var todos = localStorage.getItem(storage_key);
+        todos = JSON.parse(todos);
+        for(var key in todos) {
+            var value = todos[key][0];
+            var complete = todos[key][1];
+            sample_item = $(list_item).clone();
+            //componentHandler.upgradeElement(sample_item.get(0));
+            sample_item.find('.mdl-list__item-primary-content').append(value);
+            sample_item.find('.mdl-list__item-primary-content').attr("data-value",value);
+            if(complete) {
+                sample_item.find('.mdl-list__item-primary-content').addClass('complete')
+            }
+            $('.todo_list_all').append(sample_item);
+
+        }
+        componentHandler.upgradeDom();
+
+    }
+
 
 
     $(function() {
+        loadTodo();
         $('.btn_todo_add').on('click', function(e) {
             e.preventDefault();
 
@@ -169,11 +202,13 @@
         $('.btn_todo_remove').on('click', function(e) {
             e.preventDefault();
             $('.mdl-checkbox.is-checked').parents('li.mdl-list__item').remove();
+            saveTodo();
         });
 
         $('.btn_todo_toggle').on('click', function(e) {
             e.preventDefault();
             $('.mdl-checkbox.is-checked').parents('li.mdl-list__item').find('.mdl-list__item-primary-content').toggleClass('complete');
+            saveTodo();
         });
 
         $(document).on('click','.dialog_todo_close + span', function() {
@@ -189,16 +224,18 @@
             componentHandler.upgradeElement(sample_item.get(0));
 
             sample_item.find('.mdl-list__item-primary-content').append(add_todo_value);
+            sample_item.find('.mdl-list__item-primary-content').attr("data-value",add_todo_value);
             $('.todo_list_all').append(sample_item);
             $('#add_todo_text').val('');
             $(this).parents('dialog').get(0).close();
 
             componentHandler.upgradeDom();
-
+            saveTodo();
         });
 
         $(document).on('click','.todo_list_all li span.mdl-list__item-primary-content', function() {
             $(this).toggleClass('complete');
+            saveTodo();
         });
 
     });
