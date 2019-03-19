@@ -41,6 +41,7 @@
 
             $('#btn_load').click(function() {
                 var form_content = localStorage.getItem(storage_key);
+                form_content = decodeURIComponent(form_content);
                 var split_data = form_content.split("&");
                 for ( var i in split_data ) {
                     var content_data = split_data[i].split("=");

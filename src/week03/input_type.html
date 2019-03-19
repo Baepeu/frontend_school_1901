@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <form>
+        <select name="fruit" id="select_test">
+            <option value="사과">1</option>
+            <option value="바나나">2</option>
+            <option value="딸기">3</option>
+            <option value="수박">4</option>
+        </select>
+        <button id="select_change">셀렉트 바꾸기</button><br><br>
+
+        <input type="radio" name="gender" value="male"> Male<br>
+        <input type="radio" name="gender" value="female"> Female<br>
+        <input type="radio" name="gender" value="other"> Other<br>
+        <button id="radio_change">라디오 바꾸기</button>
+    </form>
+
+    <script type="text/javascript">
+        $(function() {
+            $('#select_test').change(function() {
+                console.log($('#select_test').val());
+                console.log($('#select_test option:selected').text());
+            });
+
+            $('#select_change').click(function() {
+                //$('#select_test option:eq(2)').prop("selected",true);
+                $('#select_test').val("사과");
+                return false;
+            });
+
+
+            $('input[name="gender"]').change(function() {
+                //console.log($(this).val());
+                console.log($('input[name="gender"]:checked').val());
+            });
+
+            $('#radio_change').click(function() {
+                //$('input[name="gender"]:eq(0)').prop("checked",true);
+                $('input[name="gender"]').filter('input:radio[value="male"]').prop("checked",true);
+
+                /*
+                    name - 서버로 전달되는 변수명
+                    class - 그룹명
+                    id - 요소 URI
+                */
+                return false;
+            });
+
+        });
+    </script>
+</body>
+</html>

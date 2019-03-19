@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <select name="fruit">
+        <option value="사과">1</option>
+        <option value="바나나">2</option>
+        <option value="딸기">3</option>
+        <option value="수박">4</option>
+    </select>
+
+    <script type="text/javascript">
+
+        // 데이터를 사전형으로 저장하기
+        var content = {} // dictionary (사전형)
+        content['content1'] = '1111';
+        content['content2'] = '2222';
+        content['content3'] = '3333';
+        console.log(content);
+
+        // 사전형 변수를 문자열로 형변환하기
+        var content_string = JSON.stringify(content);
+
+        // 문자열이었던 데이터를 다시 사전형으로 형변환하기
+        content_dict = JSON.parse(content_string);
+
+        // 사전형 전체 데이터를 하나씩 꺼내서 처리하기
+        for(var key in content_dict) {
+            // 해당 사전형 변수에서 하나의 값을 선택하여 꺼내기
+            $('#'+key).val(content_dict[key]);
+        }
+
+    </script>
+</body>
+</html>
