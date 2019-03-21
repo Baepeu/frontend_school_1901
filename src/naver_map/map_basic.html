@@ -79,7 +79,7 @@ $('#add_test').click(function() {
 
 $('#address_test').click(function() {
 
-naver.maps.Service.geocode({
+    naver.maps.Service.geocode({
         address: "광나루로 2가길 12"
     }, function(status, response) {
         if (status === naver.maps.Service.Status.ERROR) {

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Naver Taste</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=f5fiwruhii&submodules=geocoder"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+</head>
+<body>
+    <!-- Uses a header that scrolls with the text, rather than staying
+  locked at the top -->
+<div class="mdl-layout mdl-js-layout">
+  <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header-row">
+      <!-- Title -->
+      <span class="mdl-layout-title">Naver Taste</span>
+      <!-- Add spacer, to align navigation to the right -->
+      <div class="mdl-layout-spacer"></div>
+      <!-- Navigation -->
+      <nav class="mdl-navigation">
+        <!-- <a class="mdl-navigation__link" href="">Link</a> -->
+
+      </nav>
+    </div>
+  </header>
+  <div class="mdl-layout__drawer">
+    <span class="mdl-layout-title">Naver Taste</span>
+    <nav class="mdl-navigation">
+      <!-- <a class="mdl-navigation__link" href="">Link</a> -->
+    </nav>
+  </div>
+  <main class="mdl-layout__content">
+      <!-- Square card -->
+<style>
+.demo-card-square.mdl-card {
+  width: 100%;
+  height: 400px;
+}
+
+.section--center {
+    width:80%;
+    margin:0 auto;
+    padding-top:2em;
+}
+
+#write_review_dialog {
+    width:50%;
+}
+
+#write_review_dialog .demo-card-wide {
+    width:100%;
+}
+.demo-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url('images/welcome_card.jpg') center / cover;
+}
+.demo-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
+</style>
+    <section class="section--center" >
+    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+      <div class="mdl-card__title mdl-card--expand" id="naver_map">
+
+      </div>
+      <div class="mdl-card__supporting-text">
+        맛집 지도!
+      </div>
+      <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="search_address">
+          주소 검색하기
+        </a>
+      </div>
+    </div>
+    <div class="page-content">
+        <!-- Your content goes here -->
+    </div>
+    </section>
+
+    <dialog class="mdl-dialog" id="write_review_dialog">
+
+
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+          <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Write Review</h2>
+          </div>
+          <div class="mdl-card__supporting-text">
+            <form action="#" method="post">
+                <div class="mdl-textfield mdl-js-textfield">
+                  <input class="mdl-textfield__input" type="text" id="review_title">
+                  <label class="mdl-textfield__label" for="fname">맛집 이름</label>
+                </div><br>
+                <div class="mdl-textfield mdl-js-textfield">
+                    <textarea class="mdl-textfield__input" type="text" rows="3" id="review_cont" ></textarea>
+                    <label class="mdl-textfield__label" for="sample5">리뷰 내용</label>
+                  </div>
+            </form>
+          </div>
+          <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" id="save_review">
+              Save
+            </a>
+          </div>
+          <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect" id="write_review_close">
+              <i class="material-icons">close</i>
+            </button>
+          </div>
+        </div>
+    </dialog>
+  </main>
+</div>
+
+<script type="text/javascript">
+    var storage_key = "reviews";
+    var reviews = {}
+    var naver_map;
+
+    function saveReview(review) {
+        var index = Object.keys(reviews).length
+        reviews[index] = review;
+        localStorage.setItem(storage_key,JSON.stringify(reviews));
+    }
+
+    function setReview(marker, review) {
+        var info_content = '<div class="demo-card-event mdl-card mdl-shadow--2dp"> \
+          <div class="mdl-card__title mdl-card--expand"> \
+            <h4> \
+              '+review["title"]+'</h4> \
+              <p>'+review["content"]+'</p>\
+          </div>\
+        </div>';
+        var infowindow = new naver.maps.InfoWindow({
+            content: info_content
+        });
+
+        naver.maps.Event.addListener(marker, "click", function(e) {
+            if (infowindow.getMap()) {
+                infowindow.close();
+            } else {
+                infowindow.open(naver_map, marker);
+            }
+        });
+    }
+
+    function loadReview(map) {
+        var data_text = localStorage.getItem(storage_key);
+        console.log(data_text);
+        reviews = JSON.parse(data_text);
+
+        for(var key in reviews) {
+
+            var marker = new naver.maps.Marker({
+                position: reviews[key].coord,
+                map: map
+            });
+            setReview(marker, reviews[key]);
+            //naver.maps.Event.addListener(marker, 'click', showReview);
+        }
+
+    }
+
+    function writeReview(data) {
+        var dict = {};
+        dict['coord'] = data.coord;
+        $('#write_review_dialog')[0].showModal();
+        $('#save_review').one('click',function() {
+            dict['title'] = $('#review_title').val();
+            $('#review_title').val('')
+            dict['content'] = $('#review_cont').val();
+            $('#review_cont').val('');
+            saveReview(dict);
+            $('#write_review_dialog')[0].close();
+        });
+    }
+
+    $(function() {
+
+        // 지도 옵션 적용하기
+        var option = {
+            center: new naver.maps.LatLng(37.5487382,127.0534817),
+            zoom: 14,
+            scaleControl: true,
+            logoControl: true,
+            mapDataControl: true,
+            mapTypeControl: true,
+            zoomControl: true,
+            zoomControlOptions: {
+                position: naver.maps.Position.RIGHT_CENTER
+            },
+        };
+
+        // 지도 생성하기
+        naver_map = new naver.maps.Map($('#naver_map')[0], option);
+
+        loadReview(naver_map);
+
+        // 주소 검색 버튼 클릭시 다음 우편번호 api 이용하기
+        $('#search_address').click(function() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    var addr = ''; // 주소 변수
+
+                    if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                        addr = data.roadAddress;
+                    } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                        addr = data.jibunAddress;
+                    }
+
+                    //console.log(addr);
+                    naver.maps.Service.geocode({
+                        address: addr
+                    }, function(status, response) {
+                        if (status === naver.maps.Service.Status.ERROR) {
+                            return alert('Something Wrong!');
+                        }
+
+                        var item = response.result.items[0],
+                            point = new naver.maps.Point(item.point.x, item.point.y),marker = new naver.maps.Marker({
+                        position: point,
+                        map: naver_map
+                    });
+
+                        naver.maps.Event.addListener(marker, 'click', writeReview);
+
+                        naver_map.setCenter(point);
+
+                    });
+
+                }
+            }).open();
+        });
+
+
+        $('#write_review_close').click(function() {
+            $('#write_review_dialog')[0].close();
+        });
+    });
+</script>
+</body>
+</html>

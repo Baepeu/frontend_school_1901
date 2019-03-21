@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="829792fc-20d1-4be5-a86c-3757c688e6ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naver_map/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../naver_map/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naver_map/map_01.html" beforeDir="false" afterPath="$PROJECT_DIR$/../naver_map/map_01.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../naver_map/map_basic.html" beforeDir="false" afterPath="$PROJECT_DIR$/../naver_map/map_basic.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../week03/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../week03/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
